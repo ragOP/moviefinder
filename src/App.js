@@ -1,9 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
-
+import NavBar from './Components/NavBar';
+import Landingage from './Components/LandingPage';
+import { Routes, Route } from "react-router-dom"
+import AllUsers from './Components/AllUsers';
+import AddUser from './Components/AddUser';
 function App() {
   return (
-    <h1>SAYEM</h1>
+    <>
+     <NavBar/>
+ <Routes>
+  
+        <Route path="/" element={ <Landingage/> } />
+        <Route path="all" element={ <AllUsers/> } />
+        <Route path="add" element={ <AddUser/> } />
+      </Routes>
+ 
+
+  
+  
+    </>
+
   );
 }
 
