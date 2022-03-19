@@ -4,10 +4,13 @@ import Landingage from './Components/LandingPage';
 import { Routes, Route } from "react-router-dom"
 import AllUsers from './Components/AllUsers';
 import AddUser from './Components/AddUser';
+import React, { useState } from "react";
 function App() {
+ 
+  
   return (
     <>
-     <NavBar/>
+      <NavBar/>
  <Routes>
   
         <Route path="/" element={ <Landingage/> } />
@@ -16,8 +19,7 @@ function App() {
       </Routes>
  
 
-  
-  
+    
     </>
 
   );
