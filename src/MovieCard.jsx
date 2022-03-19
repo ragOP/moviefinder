@@ -9,16 +9,16 @@ const MovieCard = ({ movie }) => {
       <div>
         <img
           src={
-            movie.poster !== "N/A"
-              ? movie.poster
-              : "https//via.placeholder.com/400"
+            movie.Poster  == "N/A" ? movie.Title :movie.Poster
           }
           alt={movie.Title}
         />
       </div>
       <div>
-        <span>{movie.Type}</span>
+      <span>{movie.Type}</span>  <span>{movie.imdbID}</span> 
         <h3>{movie.Title}</h3>
+        
+
       </div>
     </div>
   );

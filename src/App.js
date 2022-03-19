@@ -3,16 +3,10 @@ import MovieCard from "./MovieCard";
 import "./App.css";
 import SearchIcon from "./search.svg";
 const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=a716d7af";
-const movie1 = {
-  Title: "The Amazing Spiderman T4 Premiere Special",
-  Year: "2012",
-  imdbID: "tt2233044",
-  Type: "movie",
-  Poster: "N/A",
-};
 
 const App = () => {
   const [movies, setMovies] = useState();
+  console.log(movies,"movies")
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -23,7 +17,7 @@ const App = () => {
     setMovies(data.Search);
   };
   useEffect(() => {
-    searchMovies("Spiderman");
+    searchMovies();
   }, []);
 
   return (
