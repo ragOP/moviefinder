@@ -7,7 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 const AllUsers = () => {
   const [user,setUsers]=useState([])
 
@@ -27,9 +28,10 @@ const AllUsers = () => {
         <TableRow>
           <TableCell>User Name</TableCell>
           <TableCell align="right">Email</TableCell>
-          <TableCell align="right">Id&nbsp;(g)</TableCell>
-          <TableCell align="right">Name&nbsp;(g)</TableCell>
-          <TableCell align="right">Phone&nbsp;(g)</TableCell>
+          <TableCell align="right">Id&nbsp;</TableCell>
+          <TableCell align="right">Name&nbsp;</TableCell>
+          <TableCell align="right">Phone</TableCell>
+          <TableCell align="right">Edit&nbsp;</TableCell> <TableCell align="right">Delete</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -47,6 +49,8 @@ const AllUsers = () => {
             <TableCell align="right">{item.id}</TableCell>
             <TableCell align="right">{item.name}</TableCell>
             <TableCell align="right">{item.phone}</TableCell>
+            <TableCell align="right"><Button  component={Link} to={`/edit/${item.id}`}>Edit</Button></TableCell>
+            <TableCell align="right"><Button>Delete</Button></TableCell>
 
          </TableRow>
         ))}
