@@ -1,8 +1,8 @@
 import { FormControl, FormGroup, InputLabel,Input, Button, Typography, } from '@mui/material'
 import { makeStyles } from '@mui/styles';
-import React,{useState} from 'react'
-import { postUser } from '../Services/api';
-import { useNavigate } from 'react-router-dom';
+import React,{useEffect, useState} from 'react'
+import { getUser, postUser } from '../Services/api';
+import { useNavigate,useParams } from 'react-router-dom';
 const useStyle=makeStyles({
   container:{
       width:'50%',
@@ -21,27 +21,35 @@ phone:""
 
 }
 
-const AddUser = () => {
+const EditUser = () => {
   const [user,setUsers]=useState(initialValues);
   const {name,username,email,phone}=user
+  const {id}=useParams()
   const classes=useStyle()
+
+
+  useEffect(()=>{
+      loadUserData()
+  },[])
+  const loadUserData=async()=>{
+     const response=await getUser(id)
+     setUsers(response.data)
+     console.log(response.data)
+  }
   let navigate = useNavigate();
   const onValueChange=(e)=>{
     setUsers({...user,[e.target.name]:e.target.value})
     console.log({...user,[e.target.name]:e.target.value})
   }
-  const addUserDetails=async()=>{
+  const editUserDetails=async()=>{
     await postUser(user)
     navigate('/all')
 }
   return (
-<<<<<<< HEAD
-    <div>raghib</div>
-=======
     <>
     
   <FormGroup className={classes.container}>
-  <Typography variant="h4">Add User</Typography>
+  <Typography variant="h4">Edit User</Typography>
     <FormControl>
       <InputLabel>Name</InputLabel>
       <Input onChange={(e)=>onValueChange(e) } name="name" value={name}/>
@@ -58,11 +66,10 @@ const AddUser = () => {
       <InputLabel>Phone</InputLabel>
       <Input onChange={(e)=>onValueChange(e)}  name="phone" value={phone}/>
     </FormControl>
-    <Button onClick={()=>addUserDetails()}>Add User</Button>
+    <Button onClick={()=>editUserDetails()}>Edit User</Button>
   </FormGroup>
   </> 
->>>>>>> 74501a4b783948b364f54620f30c21d0bce1ec41
   )
 }
 
-export default AddUser
+export default EditUser
